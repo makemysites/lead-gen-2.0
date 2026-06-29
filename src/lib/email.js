@@ -15,51 +15,43 @@ export async function sendColdEmail(lead) {
     throw new Error(`Cannot send email to lead ${lead.id} because email is empty.`);
   }
 
-  const recipientName = owner_name ? `Dr. ${owner_name}` : 'Doctor';
-  const subject = demo_link
-    ? `Custom website design preview for ${practice_name}`
-    : `Free homepage design mockup for ${practice_name}`;
+  const firstName = owner_name ? owner_name.split(' ')[0] : 'Doctor';
+  const subject = `Website Complete: ${practice_name}`;
 
-  // Compiles email template
+  const webLink = demo_link || 'https://makemysites.github.io/bright-smile-dental/';
+
+  // Compiles email template in a casual personal format
   const emailHtml = `
-    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #1E293B; line-height: 1.6;">
-      <p style="font-size: 16px; margin-bottom: 20px;">hey ${recipientName},</p>
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #1E293B; line-height: 1.6; font-size: 15px;">
+      <p style="margin-bottom: 20px;">Hi ${firstName},</p>
       
-      <p style="font-size: 15px; margin-bottom: 16px;">
-        i saw your <strong>${practice_name}</strong> and found out you dont have a website.
+      <p style="margin-bottom: 20px;">Just gonna jump straight to the point.</p>
+      
+      <p style="margin-bottom: 20px;">
+        I saw your clinic on google maps, I feel that you are leaking new patients because of no website.<br />
+        It is not high converting, and I think it can be drastically improved to get you 50% to 100% more walk-ins month on month.
       </p>
       
-      ${demo_link ? `
-        <p style="font-size: 15px; margin-bottom: 16px;">
-          I actually went ahead and built a <strong>free homepage mockup demo website</strong> specifically for your practice so you can see what is possible. You can check it out here:
-        </p>
-        <div style="margin: 25px 0; text-align: left;">
-          <a href="${demo_link}" target="_blank" style="background-color: #1D4ED8; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 15px; display: inline-block; box-shadow: 0 4px 6px -1px rgba(29, 78, 216, 0.2);">
-            View Custom Demo Site &rarr;
-          </a>
-        </div>
-        <p style="font-size: 15px; margin-bottom: 16px;">
-          If you love the design and layout, we can connect it to your domain. If not, there is absolutely no charge, and no obligations whatsoever.
-        </p>
-      ` : `
-        <p style="font-size: 15px; margin-bottom: 16px;">
-          I specialize in building modern, high-converting websites for dental clinics. I would love to build a <strong>free custom homepage mockup</strong> for your practice so you can see exactly how it would look — completely free of cost, with no payment info required up front.
-        </p>
-        <p style="font-size: 15px; margin-bottom: 16px;">
-          If you like the mockup, we can launch it and make it yours. If not, no worries at all!
-        </p>
-      `}
-      
-      <p style="font-size: 15px; margin-bottom: 24px;">
-        Would you be open to checking out a free mockup for your practice? Reply to this email and let me know.
+      <p style="margin-bottom: 20px;">
+        What I simply did was I hit an all-nighter and went ahead and built you a website. I would love to shoot it over, just so you know that I'm not here just for the talk.
       </p>
       
-      <p style="font-size: 15px; margin-bottom: 0; border-top: 1px solid #E2E8F0; padding-top: 20px; color: #64748B;">
-        Best regards,<br />
-        <strong>Abhinay</strong><br />
-        Founder, MakeMySites<br />
-        <a href="https://makemysites.in" style="color: #1D4ED8; text-decoration: none;">makemysites.in</a><br />
-        Email: <a href="mailto:abhinay@makemysites.in" style="color: #1D4ED8; text-decoration: none;">abhinay@makemysites.in</a>
+      <p style="margin-bottom: 20px;">
+        Have a look at this already-built website: <a href="${webLink}" style="color: #1D4ED8; text-decoration: underline;">${webLink}</a><br />
+        If you like it, say yes and I'll make one for you.
+      </p>
+      
+      <p style="margin-bottom: 20px;">
+        Thanks.<br />
+        Abhinay
+      </p>
+      
+      <p style="margin-bottom: 24px; font-style: italic; color: #475569;">
+        P.S: I would love if you have a look at what I've built, might help me sleep peacefully!
+      </p>
+      
+      <p style="color: #94A3B8; font-size: 12px; margin-top: 32px; border-top: 1px solid #E2E8F0; padding-top: 16px;">
+        Sent from my iPhone
       </p>
     </div>
   `;
