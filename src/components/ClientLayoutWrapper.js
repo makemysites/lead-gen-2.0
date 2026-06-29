@@ -15,7 +15,8 @@ import {
   AlertTriangle,
   Calendar,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  Mail
 } from 'lucide-react';
 
 export default function ClientLayoutWrapper({ children }) {
@@ -30,6 +31,7 @@ export default function ClientLayoutWrapper({ children }) {
     { path: '/follow-ups', label: 'Follow-Ups', icon: CalendarClock, badgeKey: 'followUp' },
     { path: '/demo-sent', label: 'Demo Sent', icon: Send, badgeKey: 'demoSent' },
     { path: '/rejected', label: 'Rejected', icon: XOctagon, badgeKey: 'rejected' },
+    { path: '/bulk-campaign', label: 'Bulk Campaign', icon: Mail },
     { path: '/settings', label: 'Settings', icon: Settings }
   ];
 

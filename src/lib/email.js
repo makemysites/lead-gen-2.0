@@ -23,10 +23,10 @@ export async function sendColdEmail(lead) {
   // Compiles email template
   const emailHtml = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #1E293B; line-height: 1.6;">
-      <p style="font-size: 16px; margin-bottom: 20px;">Hi ${recipientName},</p>
+      <p style="font-size: 16px; margin-bottom: 20px;">hey ${recipientName},</p>
       
       <p style="font-size: 15px; margin-bottom: 16px;">
-        I was searching for top-rated dental practices in your area and noticed that <strong>${practice_name}</strong> doesn't have an active website, or your current link isn't loading. 
+        i saw your <strong>${practice_name}</strong> and found out you dont have a website.
       </p>
       
       ${demo_link ? `
