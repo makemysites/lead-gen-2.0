@@ -6,6 +6,12 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request) {
   try {
+    return NextResponse.json({
+      success: false,
+      status: 'disabled',
+      message: 'Daily scraper has been disabled by the administrator.'
+    });
+
     const authHeader = request.headers.get('authorization');
     const cronSecret = process.env.CRON_SECRET;
 
